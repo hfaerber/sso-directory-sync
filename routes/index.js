@@ -16,7 +16,7 @@ app.use(
 
 const workos = new WorkOS(process.env.WORKOS_API_KEY)
 const clientID = process.env.WORKOS_CLIENT_ID
-const organizationID = 'org_test_idp'
+const organizationID = 'org_01JH696Q0C51Z6B91QM2QY9QS1'
 const redirectURI = 'http://localhost:8000/callback'
 const state = ''
 
@@ -48,7 +48,6 @@ router.post('/login', (req, res) => {
 
     try {
         const url = workos.sso.getAuthorizationURL(params)
-
         res.redirect(url)
     } catch (error) {
         res.render('error.ejs', { error: error })
@@ -85,11 +84,11 @@ router.get('/callback', async (req, res) => {
 })
 
 router.get('/logout', async (req, res) => {
+
     try {
         session.first_name = null
         session.profile = null
         session.isloggedin = null
-
         res.redirect('/')
     } catch (error) {
         res.render('error.ejs', { error: error })
