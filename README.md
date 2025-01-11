@@ -1,64 +1,61 @@
-# Node.js Example App with SSO powered by WorkOS
+# Node.js Application Using WorkOS to configure SSO and Directory Sync with Okta 
 
 An example application demonstrating how to use the [WorkOS Node.js SDK](https://github.com/workos/workos-node) to authenticate users via SSO.
 
-## Prerequisites
+This application uses WorkOS's [node-sso example application](https://github.com/workos/node-example-applications/tree/main/node-sso-example) as a starter.  WorkOS is used to configure SSO and Directory Sync connections with Okta. 
 
-Node.js version 10+
+## To Run Locally
 
-## Node.js Project Setup
+### Prerequisites
 
-1. Clone the main repo and install dependencies for the app you'd like to use:
+- Node.js version 10+
+- API key, client id and session secret environment variables are required to run this session locally. Please contact Heather for more information.
+
+### Setup
+
+1. Clone this repo
 
     ```bash
     # HTTPS
-    git clone https://github.com/workos/node-example-applications.git
+    git clone https://github.com/hfaerber/sso-directory-sync.git
     ```
 
     or
 
     ```bash
     # SSH
-    git clone git@github.com:workos/node-example-applications.git
+    git clone git@github.com:hfaerber/sso-directory-sync.git
     ```
 
-2. Navigate to the SSO app within the cloned repo.
-
-    ```bash
-    cd node-example-applications/node-sso-example
-    ```
-
-3. Install the dependencies.
+2. Install the dependencies.
     ```bash
     npm install
     ```
 
-## Configure your environment
+3. Create .env file at the project root
+    ```bash
+    touch .env
+    ```
 
-4. Grab your API Key and Client ID from your WorkOS Dashboard. Create a `.env`
-   file at the project root, and store them like so:
+4. Contact [https://www.linkedin.com/in/heather-faerber/](Heather) for required environment variables.
+
+5. Store the environment variables like so:
 
     ```bash
     WORKOS_API_KEY=sk_xxxxxxxxxxxxx
     WORKOS_CLIENT_ID=project_xxxxxxxxxxxx
+    SESSION_SECRET=xxxxxxxxxxxx
     ```
 
-## SSO Setup with WorkOS
+### Run the app
 
-5. Follow the [SSO authentication flow instructions](https://workos.com/docs/sso/guide/introduction) to create a new SSO connection in your WorkOS dashboard.
+6. Start the server
+    ```bash
+    npm start
+    ```
 
-6. Add `http://localhost:8000/callback` as a Redirect URI in the Configuration section of the Dashboard.
+7. Navigate to 'http://localhost:8000/' in your browser.
 
-7. Update `routes/index.js` with the Organization ID.
+8. Login with Google, Microsoft or Okta
 
-## Testing the Integration
 
-8. Start the server and head to http://localhost:8000/ to begin the login flow:
-
-```sh
-npm start
-```
-
-## Need help?
-
-If you get stuck and aren't able to resolve the issue by reading our [WorkOS Node.js SDK documentation](https://docs.workos.com/sdk/node), API reference, or tutorials, you can reach out to us at support@workos.com and we'll lend a hand.
