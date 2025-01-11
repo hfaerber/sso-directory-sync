@@ -20,8 +20,16 @@ const organizationID = 'org_01JH696Q0C51Z6B91QM2QY9QS1'
 const redirectURI = 'http://localhost:8000/callback'
 const state = ''
 
-router.get('/', async function (req, res) {
-        res.render('index.ejs', { title: 'Home' })
+router.get('/', function (req, res) {
+  if (session.isloggedin) {
+      res.render('login_successful.ejs', {
+          profile: session.profile,
+          first_name: session.first_name,
+          last_name: session.last_name
+      })
+  } else {
+      res.render('index.ejs', { title: 'Home' })
+  }
 })
 
 router.post('/login', (req, res) => {
@@ -73,29 +81,24 @@ router.get('/callback', async (req, res) => {
     if (errorMessage) {
         res.render('error.ejs', { error: errorMessage })
     } else {
-        res.redirect('/directory')
+        res.redirect('/')
     }
 })
 
 router.get('/directory', async function (req, res) {
-  if (session.isloggedin) {
     try {
       const usersFromDirectory = await workos.directorySync.listUsers({
         directory: 'directory_01JH997SQE9SQXKBKGKH46Y8CW',
       });
         console.log('usersFromDirectory: ', usersFromDirectory)
+
+        res.render('directory.ejs', {
+          directory: usersFromDirectory
+      })
+
       } catch (error) {
         res.render('error.ejs', { error: error })
     }
-
-      res.render('login_successful.ejs', {
-          profile: session.profile,
-          first_name: session.first_name,
-          last_name: session.last_name
-      })
-  } else {
-    res.redirect('/')
-  }
 })
 
 router.get('/logout', async (req, res) => {
