@@ -87,13 +87,15 @@ router.get('/callback', async (req, res) => {
 
 router.get('/directory', async function (req, res) {
     try {
-      const usersFromDirectory = await workos.directorySync.listUsers({
+      const directoryData = await workos.directorySync.listUsers({
         directory: 'directory_01JH997SQE9SQXKBKGKH46Y8CW',
       });
-        console.log('usersFromDirectory: ', usersFromDirectory)
-
+      const usersFromDirectory = directoryData.data.map(user => {
+        return { firstName: user.first_name, lastName: user.last_name, title: user.job_title, email: user.emails[0].value } 
+      })
+      
         res.render('directory.ejs', {
-          directory: usersFromDirectory
+          directoryUsers: usersFromDirectory
       })
 
       } catch (error) {
