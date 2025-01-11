@@ -1,8 +1,19 @@
-# Node.js Application Using WorkOS to configure SSO and Directory Sync with Okta 
+# Okta SSO and Directory Sync with WorkOs 
 
-An example application demonstrating how to use the [WorkOS Node.js SDK](https://github.com/workos/workos-node) to authenticate users via SSO.
+This node.js application uses WorkOS's [node-sso example application](https://github.com/workos/node-example-applications/tree/main/node-sso-example) as a starter.  WorkOS is used to configure SSO and Directory Sync connections with Okta. 
 
-This application uses WorkOS's [node-sso example application](https://github.com/workos/node-example-applications/tree/main/node-sso-example) as a starter.  WorkOS is used to configure SSO and Directory Sync connections with Okta. 
+## Video Demonstration
+
+This [video walkthrough](https://youtu.be/w8OqwRxk5IM) (no audio) shows successful logins using the Google OAuth option and the Enterprise SAML option with Okta.  It also demonstrates a successful Directory Sync connection by displaying a job title change originating in Okta for user Noah Davis. 
+
+## To Use the Deployed Application
+
+1. Navigate to the [deployed app](https://sso-directory-sync.onrender.com/).
+
+2. Login using the Google OAuth option. _Note that only users configured in Heather's Okta application will be able to successfully login in through the Enterprise SAML option._ 
+
+3. Use the Directory button to view user details from the Okta Directory Sync.
+
 
 ## To Run Locally
 
@@ -39,7 +50,7 @@ This application uses WorkOS's [node-sso example application](https://github.com
 
 4. Contact [https://www.linkedin.com/in/heather-faerber/](Heather) for required environment variables.
 
-5. Store the environment variables like so:
+5. Store the environment variables in the .env file:
 
     ```bash
     WORKOS_API_KEY=sk_xxxxxxxxxxxxx
@@ -56,6 +67,6 @@ This application uses WorkOS's [node-sso example application](https://github.com
 
 7. Navigate to 'http://localhost:8000/' in your browser.
 
-8. Login with Google, Microsoft or Okta
+8. Login using the Google OAuth option. _Note that only users configured in Heather's Okta application will be able to successfully login in through the Enterprise SAML option._ 
 
-
+9. Use the Directory button to view user details from the Okta Directory Sync.
