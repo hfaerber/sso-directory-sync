@@ -1,14 +1,14 @@
 # Okta SSO and Directory Sync with WorkOs 
 
-This node.js application uses WorkOS's [node-sso example application](https://github.com/workos/node-example-applications/tree/main/node-sso-example) as a starter.  WorkOS is used to configure SSO and Directory Sync connections with Okta. 
+This node.js application uses WorkOS's [node-sso example application](https://github.com/workos/node-example-applications/tree/main/node-sso-example){:target="_blank"} as a starter.  WorkOS is used to configure SSO and Directory Sync connections with Okta. 
 
 ## Video Demonstration
 
-This [video walkthrough](https://youtu.be/w8OqwRxk5IM) (no audio) shows successful logins using the Google OAuth option and the Enterprise SAML option with Okta.  It also demonstrates a successful Directory Sync connection by displaying a job title change originating in Okta for user Noah Davis. 
+This [video walkthrough](https://youtu.be/w8OqwRxk5IM){:target="_blank"} (no audio) shows successful logins using the Google OAuth option and the Enterprise SAML option with Okta.  It also demonstrates a successful Directory Sync connection by displaying a job title change originating in Okta for user Noah Davis. 
 
 ## To Use the Deployed Application
 
-1. Navigate to the [deployed app](https://sso-directory-sync.onrender.com/).
+1. Navigate to the [deployed app](https://sso-directory-sync.onrender.com/){:target="_blank"} .
 
 2. Login using the Google OAuth option. _Note that only users configured in Heather's Okta application will be able to successfully login in through the Enterprise SAML option._ 
 
@@ -48,7 +48,7 @@ This [video walkthrough](https://youtu.be/w8OqwRxk5IM) (no audio) shows successf
     touch .env
     ```
 
-4. Contact [https://www.linkedin.com/in/heather-faerber/](Heather) for required environment variables.
+4. Contact [https://www.linkedin.com/in/heather-faerber/](Heather){:target="_blank"} for required environment variables.
 
 5. Store the environment variables in the .env file:
 
