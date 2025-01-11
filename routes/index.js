@@ -14,19 +14,16 @@ app.use(
   })
 );
 
-console.log('env before:', process.env.NODE_ENV)
-
 const workos = new WorkOS(process.env.WORKOS_API_KEY);
 const clientID = process.env.WORKOS_CLIENT_ID;
 const organizationID = "org_01JH696Q0C51Z6B91QM2QY9QS1";
-// const redirectURI = "http://localhost:8000/callback";
-const redirectURI = process.env.NODE_ENV === "production"
-? "https://sso-directory-sync.onrender.com/callback" // deployed URL
-: "http://localhost:8000/callback";
+const redirectURI =
+  process.env.NODE_ENV === "production"
+    ? "https://sso-directory-sync.onrender.com/callback"
+    : "http://localhost:8000/callback";
 const state = "";
 
 router.get("/", function (req, res) {
-  console.log('env get:', process.env.NODE_ENV)
   if (session.isloggedin) {
     res.render("login_successful.ejs", {
       profile: session.profile,
