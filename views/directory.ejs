@@ -4,15 +4,64 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter" />
     </head>
     
-    <body class="container_login">
-        <div class="flex_column">
-            <div class="flex heading_div">
-                <img src="../public/images/workos-logo-with-text.png" alt="workos logo" />
+    <body class="container_success">
+      <div class="logged_in_nav">
+          <div class="flex">
+              <div>
+                  <img src="../public/images/workos-logo-with-text.png" alt="workos logo" />
+              </div>
+          </div>
+          <div class="flex">
+              <a href="javascript:history.back()">
+                  <button class='button button-sm button-outline'>
+                      Back
+                  </button>
+              </a>
+              <a href="/logout">
+                  <button class="button button-outline logout_button">
+                      Log Out
+                  </button>
+              </a>
+          </div>
+      </div>
+
+      <div class='flex'>
+        <div class="logged_in_div_right">
+            <div class="flex_column width-100">
+                <div class="flex space-between width-100">
+                    <div>
+                        <h2>User Details</h2>
+                    </div>
+                    <!-- <div>
+                        <a href="javascript:history.back()">
+                            <button class='button button-sm button-outline'>Back</button>
+                        </a>
+                    </div> -->
+                </div>
+                <% if (directoryUsers.length > 0) { %>
+                <div class="table-container width-100">
+                    <table class="width-100">
+                        <tr>
+                            <th class="btm_lft_round">Name</th>
+                            <th>Job Title</th>
+                            <th class="btm_rt_round">Email</th>
+                        </tr>
+                        <% directoryUsers.forEach(user => { %>
+                        <tr>
+                            <td class="ta-left"><%= user.firstName %> <%= user.lastName %></td>
+                            <td class="ta-left"><%= user.title %></td>
+                            <td class="ta-left"><%= user.email %></td>
+                        </tr>
+                        <% }) %>
+                    </table>
+                </div>
+                <% } else { %>
+                <div class="card width-100">
+                    <code>No Users Found</code>
+                </div>
+                <% } %>
             </div>
-            <h2>Display directory users here</h2>
-            <pre>
-              <%= JSON.stringify(directory, null, 4) %>
-            </pre>
         </div>
+    </div>
     </body>
 </html>
